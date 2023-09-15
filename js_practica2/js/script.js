@@ -8,6 +8,7 @@ function inicio(){
     document.getElementById("btn5").addEventListener("click",function5);
     document.getElementById("btn6").addEventListener("click",function6);
     document.getElementById("btn7").addEventListener("click",function7);
+    document.getElementById("btn8").addEventListener("click",function8);
 
     //Funciones
 
@@ -90,6 +91,13 @@ function inicio(){
         const listaComponentes=document.getElementsByClassName("caja");
         for(let item of listaComponentes){
             item.textContent=Math.round(Math.random()*100);
+        }
+    }
+
+    function function8(){
+        const listaComponentes=document.getElementsByClassName("caja");
+        for(let item of listaComponentes){
+            item.context=prompt("teclea un número entre el 1 - 100");
         }
     }
 }
