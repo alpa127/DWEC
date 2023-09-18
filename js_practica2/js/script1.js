@@ -1,6 +1,7 @@
 window.addEventListener("load", inicio);
 var intervalo1;
 var intervalo2;
+var intervalo4;
 function inicio(){
     console.log("entro en js");
     document.getElementById("btn1").addEventListener("click",function1);
@@ -85,5 +86,33 @@ function inicio(){
            
         }
     }
+
+    function function7(){
+        const colores=["Red","Green","Blue","Yellow","Purple","Orange"];
+        let caja1=document.getElementById("c1");
+        let caja2=document.getElementById("c2");
+        let caja3=document.getElementById("c3");
+        let caja4=document.getElementById("c4");
+        let punt=0;
+        let numero = 10;
+        intervalo4 = setInterval(juego,500);
+        function juego(){
+
+         let color1 = caja1.style.backgroundColor= colores[Math.round(Math.random()*6)];
+         let color2 = caja2.style.backgroundColor= colores[Math.round(Math.random()*6)];
+         caja4.textContent=punt;
+         
+       }
+       let contadorjuego = setInterval(contjuego,1000);
+       function contjuego(){
+        caja3.textContent=numero;
+        
+        if(numero==0){
+            clearInterval(contadorjuego);
+            clearInterval(intervalo4);
+        }
+        numero--;
+       }
+}
    
 }
