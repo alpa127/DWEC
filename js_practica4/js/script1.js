@@ -41,6 +41,11 @@ function juego(){
     }
 }
 function fin(){
+    puntos=0;
+    contadorSegundos=30;
+    spPuntos.textContent=0;
+    spTiempo.textContent=0;
+    clearInterval(tiempo);
 
 }
 }
