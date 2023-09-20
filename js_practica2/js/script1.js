@@ -93,6 +93,7 @@ function inicio(){
         let caja2=document.getElementById("c2");
         let caja3=document.getElementById("c3");
         let caja4=document.getElementById("c4");
+        let caja6=document.getElementById("c6");
         let punt=0;
         let numero = 10;
         intervalo4 = setInterval(juego,500);
@@ -100,8 +101,18 @@ function inicio(){
 
          let color1 = caja1.style.backgroundColor= colores[Math.round(Math.random()*6)];
          let color2 = caja2.style.backgroundColor= colores[Math.round(Math.random()*6)];
-         caja4.textContent=punt;
          
+         if(color1==color2){
+            if(document.getElementById("btn8").onclick){
+                punt++;
+            }else{
+                punt--;
+            }
+         }else{
+            
+            
+         }
+         caja4.textContent=punt;
        }
        let contadorjuego = setInterval(contjuego,1000);
        function contjuego(){
