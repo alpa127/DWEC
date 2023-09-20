@@ -23,8 +23,8 @@ function juego(){
     let num2=Math.round(Math.random()*3);
     console.log(colores[num1])
     caja.style.backgroundColor=colores[num1];
-    caja.textContent=""+nombres[num2];
-    spTiempo.textContent=contadorSegundos;
+    document.getElementById("nom").textContent=""+nombres[num2];
+    spTiempo.textContent="Tiempo: " + contadorSegundos;
     contadorSegundos--;
     if(contadorSegundos==0){
         clearInterval(tiempo);
@@ -32,13 +32,15 @@ function juego(){
     caja.onclick=comprobar;
     function comprobar(){
         if(num1==num2){
+            
             puntos++;
         }else{
             puntos--;
         }
+        spPuntos.textContent="Puntos: " + puntos;
     }
 }
-function parar(){
+function fin(){
 
 }
 }
