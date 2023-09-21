@@ -54,19 +54,42 @@ function Jugar(){
             contadorSegundos--;
             cargarInfo();
         }else{
+            
             limpiarDivs();
-            alert("fin de partida")
+            alert("fin de partida");
             clearInterval(tiempo);
+           
         }
     }
 }
 
 function cargarInfo(){
-
+    spPuntos.textContent="Puntos: " + puntos +
+    "   Tiempo: "+ contadorSegundos;
 }
 function coloresJuego(){
-    let arrayCajasJuego=document
+    let arrayCajasJuego=document.getElementsByName("cajasJuego");
+    //foreach
+    arrayCajasJuego.forEach(function(item,posicion){
+        let numColorFondo=Math.floor(Math.random()*colores.length);
+        let numTextoFondo=Math.floor(Math.random()*colores.length);
+        item.style.backgroundColor=colores[numColorFondo];
+        item.textContent=nombres[numTextoFondo];
+        item.onclick=comprobar;
+        function comprobar(){
+            if(numColorFondo==numTextoFondo){
+                puntos++;
+            }else{
+                puntos--;
+            }
+            cargarInfo();
+        }
+    });
 }
 function limpiarDivs(){
-
+    let arrayCajasJuego=document.getElementsByName("cajasJuego");
+    arrayCajasJuego.forEach(function(item,posicion){
+        item.onclick=function(){};
+        item.setAttribute("disabled",true);
+    });
 }
