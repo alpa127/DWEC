@@ -24,39 +24,40 @@ function inicio(){
 
     function juego(){
         console.log("entro en juego");
-        num1.textContent=Math.round(Math.random()*100);
-        op.textContent=operaciones[0];
-        num2.textContent=Math.round(Math.random()*100);
+        let n1=Math.round(Math.random()*100);
+        num1.textContent=n1;
+        op.textContent=operaciones[Math.floor(Math.random()*4)];
+        let n2=Math.round(Math.random()*100);
+        num2.textContent=n2;
         tiempo=setInterval(juego,15000);
         let btnComprobar=document.getElementById("comprobar")
         btnComprobar.onclick=comprobar;
-    }
-
-    function comprobar(){
-        let suma=num1+num2;
-        let resta=num1-num2;
-        let multiplicacion=num1*num2;
-        let division=num1/num2;
-        let resul=document.getElementById("resultado");
-
-        if(operaciones[0] && suma==resul){
-            puntos++;
-            spPunt.textContent= "Puntuación: " + puntos;
-        //}else if(operaciones[1] && resta==relsu){
-        //    puntos++;
-        //    spPunt.textContent= "Puntuación: " + puntos;
-        //}else if(operaciones[2] && multiplicacion==relsu){
-         //   puntos++;
-         //   spPunt.textContent= "Puntuación: " + puntos;
-        //}else if(operaciones[3] && division==relsu){
-          //  puntos++;
-            //spPunt.textContent= "Puntuación: " + puntos;
-        }else{
-            fallos++;
-            spFallos.textContent= "Fallos: " + fallos;
+       
+        function comprobar(){
+            let suma=n1+n2;
+            let resta=n1-n2;
+            let multiplicacion=n1*n2;
+            let division=n1/n2;
+            let resul=parseFloat(document.getElementById("resultado").value);
+    
+            if(operaciones[0] && suma==resul){
+                puntos++;
+                spPunt.textContent= "Puntuación: " + puntos;
+            }else if(operaciones[1] && resta==relsu){
+                puntos++;
+                spPunt.textContent= "Puntuación: " + puntos;
+            }else if(operaciones[2] && multiplicacion==relsu){
+                puntos++;
+                spPunt.textContent= "Puntuación: " + puntos;
+            }else if(operaciones[3] && division==relsu){
+                puntos++;
+                spPunt.textContent= "Puntuación: " + puntos;
+            }else{
+                fallos++;
+                spFallos.textContent= "Fallos: " + fallos;
+            }
         }
     }
-      
 
     function fin(){
         puntos=0;
@@ -67,6 +68,7 @@ function inicio(){
         spPunt.textContent= "Puntuación: " + puntos;
         spFallos.textContent= "Fallos: " + fallos;
         clearInterval(tiempo);
+        alert("Has finalizado el juego");
 
     }
 }
