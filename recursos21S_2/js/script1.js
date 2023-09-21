@@ -53,13 +53,14 @@ function Jugar(){
         if(contadorSegundos>0){
             contadorSegundos--;
             cargarInfo();
-        }else{
-            
+        }else{           
             limpiarDivs();
             alert("fin de partida");
-            clearInterval(tiempo);
-           
+            clearInterval(tiempo);       
         }
+        if(contadorSegundos % 5 == 0){
+            coloresJuego();
+        }else{}
     }
 }
 
