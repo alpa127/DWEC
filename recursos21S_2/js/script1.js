@@ -78,11 +78,13 @@ function coloresJuego(){
         item.textContent=nombres[numTextoFondo];
         item.onclick=comprobar;
         function comprobar(){
+        if(contadorSegundos>0){
             if(numColorFondo==numTextoFondo){
                 puntos++;
             }else{
                 puntos--;
             }
+        }
             cargarInfo();
         }
     });
