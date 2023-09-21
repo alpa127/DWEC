@@ -58,9 +58,11 @@ function Jugar(){
             alert("fin de partida");
             clearInterval(tiempo);       
         }
+        if(contadorSegundos>0){
         if(contadorSegundos % 5 == 0){
             coloresJuego();
         }else{}
+    }
     }
 }
 
@@ -78,13 +80,12 @@ function coloresJuego(){
         item.textContent=nombres[numTextoFondo];
         item.onclick=comprobar;
         function comprobar(){
-        if(contadorSegundos>0){
             if(numColorFondo==numTextoFondo){
                 puntos++;
+                item.onclick=function(){};
             }else{
                 puntos--;
             }
-        }
             cargarInfo();
         }
     });
@@ -93,6 +94,6 @@ function limpiarDivs(){
     let arrayCajasJuego=document.getElementsByName("cajasJuego");
     arrayCajasJuego.forEach(function(item,posicion){
         item.onclick=function(){};
-        item.setAttribute("disabled",true);
+       
     });
 }
