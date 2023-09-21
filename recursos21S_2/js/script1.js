@@ -29,6 +29,7 @@ function inicio(){
     for (let i=0;i<15; i++){
         let divs=document.createElement("div");
         divs.className="fondo";
+        divs.setAttribute("Name","cajasJuego");
         contenedorFlex.appendChild(divs);
     }
     //Campo se añade a su inmediato superior
@@ -36,4 +37,36 @@ function inicio(){
 
     //añadir campo al contenedor principal
     contenedorPrincipal.appendChild(campo);
+    btnJugar.onclick=Jugar;
+}
+
+function Jugar(){
+    console.log("Entro en jugar")
+    contadorSegundos=30;
+    puntos=0;
+    btnJugar.disables=false;
+    cargarInfo();
+    coloresJuego();
+    //temporizador
+    tiempo=setInterval(accion,1000);
+    function accion(){
+        if(contadorSegundos>0){
+            contadorSegundos--;
+            cargarInfo();
+        }else{
+            limpiarDivs();
+            alert("fin de partida")
+            clearInterval(tiempo);
+        }
+    }
+}
+
+function cargarInfo(){
+
+}
+function coloresJuego(){
+    let arrayCajasJuego=document
+}
+function limpiarDivs(){
+
 }
