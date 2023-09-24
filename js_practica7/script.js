@@ -3,29 +3,26 @@ function inicio(){
 
     console.log("entro en inicio");
 
-    let btnJugar = document.getElementById("jugar+69");
+    let btnJugar = document.getElementById("jugar");
     btnJugar.onclick=Jugar;
 }
 
 function Jugar(){
 
-    let rutaImg="/js_practica7/img/";
+    let rutaImg="js_practica7\img\0.JPG";
 
     var cajaPadre=document.getElementById("cajaPadre");
     cajaPadre.setAttribute("display","flex");
 
     cajaPadre.innerHTML = "";
 
-    for(let i=0;i<5;i++){
+    let imagenes=document.createElement("img");
+    cajaPadre.appendChild(imagenes);
 
-        let imagenes=document.createElement("img");
-        cajaPadre.appendChild(imagenes);
 
-        let numeroFoto=Math.round(Math.random()*19);
+    let srcImagenes=rutaImg;
+    imagenes.setAttribute("src",srcImagenes);
 
-        let srcImagenes=rutaImg+numeroFoto+".jpg";
-        imagenes.setAttribute("src",srcImagenes);
-    
-        }
+
 
 }
