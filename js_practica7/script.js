@@ -3,8 +3,8 @@ function inicio(){
 
     console.log("entro en inicio");
 
-    let btnJugaz = document.getElementById("mostrarJS");
-    btnCargar.onclick=cargarImg;
+    let btnJugar = document.getElementById("jugar+69");
+    btnJugar.onclick=Jugar;
 }
 
 function Jugar(){
@@ -14,18 +14,18 @@ function Jugar(){
     var cajaPadre=document.getElementById("cajaPadre");
     cajaPadre.setAttribute("display","flex");
 
-    cajaImg.innerHTML = "";
+    cajaPadre.innerHTML = "";
 
     for(let i=0;i<5;i++){
 
         let imagenes=document.createElement("img");
         cajaPadre.appendChild(imagenes);
 
-        let numeroFoto=Math.round(Math.random()*93);
+        let numeroFoto=Math.round(Math.random()*19);
 
         let srcImagenes=rutaImg+numeroFoto+".jpg";
         imagenes.setAttribute("src",srcImagenes);
     
         }
 
-    }
+}
