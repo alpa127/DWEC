@@ -1,11 +1,18 @@
 window.onload = inicio;
 
 function inicio() {
+
+    var imagenReferencia;
     
     let contenedorP = document.createElement("div");
     contenedorP.className = "container";
     let cuerpo = document.querySelector("body");
     cuerpo.appendChild(contenedorP);
+
+    let contenedorR=document.createElement("div");
+    contenedorR.className="gallery";
+    contenedorP.appendChild(contenedorR);
+   
 
     let contenedorS = document.createElement("fieldset");
     contenedorS.className = "gallery";
@@ -15,22 +22,33 @@ function inicio() {
     leyenda.textContent = "Practica 8";
     contenedorS.appendChild(leyenda);
 
+ 
+        
+
     var contadorBordes = 0;
 
     var segundos = 30;
     var temporizador = setInterval(refrescar, 10000);
 
     refrescar();
-
-
+    
     function refrescar() {
-        // contenedorS.innerHTML="";
-         let arrayimg=document.querySelectorAll("img");
-         arrayimg.forEach(function(item,indice){
-                contenedorS.removeChild(item);
-         });
+
+        contenedorS.innerHTML="";
+
+        contenedorR.innerHTML="";
+
+        //  let arrayimg=document.querySelectorAll("img");
+        //  arrayimg.forEach(function(item,indice){
+        //         contenedorS.removeChild(item);
+        //         contenedorR.removeChild(item);
+        //  });
             
+        var contadorBordes = 0;
+
         
+         cargarImagenReferencia();
+    
 
         for (let i = 0; i < 20; i++) {
             let numR = Math.round(Math.random() * 20);
@@ -49,9 +67,24 @@ function inicio() {
                 imagenes.src = rutaImgM + numR + ".jpg";
             }
 
-            imagenes.onmouseover = expandir;
-            imagenes.onmouseleave = encoger;
-            imagenes.onclick = bordes;
+            // imagenes.onmouseover = expandir;
+            // imagenes.onmouseleave = encoger;
+            // imagenes.onclick = bordes;
+
+            imagenes.onclick=comparar;
+
+            function comparar(){
+                console.log(imagenes.getAttribute("src"));
+                console.log("imagen Referencia " + imagenR);
+                let imagenSelec= imagen.getAttribute("src");
+                let imagenRef=imagenReferencia;
+
+                if(imagenSelec == imagenRef){
+                    alert("Acetaste");
+                }else{
+                    alert("Fallaste");
+                }
+            }
 
 
             function expandir() {
@@ -87,8 +120,32 @@ function inicio() {
 
             }
 
+
         }
+       
 
     }
+
+    function cargarImagenReferencia(){
+       
+        let imagenR=document.createElement("img");
+        imagenR.className="gallery img";
+        let numeroRandom= Math.round(Math.random()*2);
+
+        let rutaImgH = "https://randomuser.me/api/portraits/men/";
+        let rutaImgM = "https://randomuser.me/api/portraits/women/";
+        let numeroR = Math.round(Math.random() * 20);
+
+
+        if(numeroRandom==1){
+            imagenR.src = rutaImgH + numeroR+ ".jpg";
+        }else{
+            imagenR.src = rutaImgM + numeroR + ".jpg";
+        }
+        contenedorR.appendChild(imagenR);
+        imagenReferencia=imagenR.src;
+    }
+
+    
 
 }
