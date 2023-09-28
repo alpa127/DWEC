@@ -16,7 +16,7 @@ function inicio(){
     contenedorTodos.className="gallery";
     let contenedorAzul = document.createElement("fieldset");
     let contenedorVerde = document.createElement("fieldset");
-    let contenedorRojo= document.createElement("fieldset");
+    let contenedorRojo = document.createElement("fieldset");
     let contenedorNaranja = document.createElement("fieldset");
 
     let leyendaTodos = document.createElement("legend");
