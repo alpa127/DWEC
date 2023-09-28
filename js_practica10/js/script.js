@@ -9,6 +9,7 @@ const componentes=[];
 function inicio(){
 
     btn1.onclick=avanzar;
+    btn2.onclick=avanzar2;
 
     let contenedorP=document.createElement("div");
     contenedorP.className="container";
@@ -18,6 +19,7 @@ function inicio(){
     cuerpo.appendChild(contenedorP);
 
     crearCajas();
+   
 
     function crearCajas(){
         for(let i=0;i<40;i++){
@@ -28,20 +30,43 @@ function inicio(){
             contenedorS.appendChild(caja);
         }
     }
-
+    
     function avanzar(){
+
+        componentes.forEach(accion);
+        function accion(item,indice){
+            item.style.backgroundColor="green";
+        }
         
        var numeroCaja=0;
-
-        let contador1=setInterval(cambioR,500);
-        
+       let contador1=setInterval(cambioR,200);
         function cambioR(){
+            if(componentes[numeroCaja].style.backgroundColor= "green"){
             componentes[numeroCaja].style.backgroundColor="red";
             numeroCaja++;
-        
-          
-           
-            
+            }else{
+                componentes[numeroCaja].style.backgroundColor="green";
+                numeroCaja++;
+            }
         }
     }
+    let contador2=setInterval(cambioR,200);
+    function avanzar2(){
+        clearInterval()
+        var numeroCaja=0;
+        let contador2=setInterval(cambioR,200);
+        function cambioR(){
+            if(numeroCaja<componentes.length){
+            componentes[numeroCaja].style.backgroundColor="red";
+            if(numeroCaja>0){
+                componentes[numeroCaja -1].style.backgroundColor="green";
+            }numeroCaja++;
+            }else{
+                componentes[numeroCaja-1].style.backgroundColor="green";
+                numeroCaja=0;
+            }
+            
+        }
+        }
+    
 }
