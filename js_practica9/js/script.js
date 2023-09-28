@@ -6,6 +6,8 @@ const componentes = [];
 
 function inicio(){
     
+    btnM.onclick=mover;
+
     let contenedorP = document.createElement("div");
     contenedorP.className="container";
     cuerpo.appendChild(contenedorP);
@@ -59,5 +61,30 @@ function inicio(){
         contenedorTodos.appendChild(cajaColor);
     }
 
+    function mover(){
+        componentes.forEach(accion);
+
+        function accion(item, indice){
+            console.log(item.style.backgroundColor);
+            
+            switch (item.style.backgroundColor) {
+                case "orange":
+                    contenedorNaranja.appendChild(item);
+                    break;
+                case "blue":
+                    contenedorAzul.appendChild(item);
+                    break;
+                case "green":
+                    contenedorVerde.appendChild(item);
+                    break;
+                case "red":
+                    contenedorRojo.appendChild(item);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    }
 
 }
