@@ -84,16 +84,17 @@ function sorteo() {
   resul.className = "gallery2 div";
   resul.style.backgroundColor = "blue";
   resul.textContent = contAciertos;
+  contenedorSorteo.appendChild(resul);
 
   function recorrido(item, index) {
     vectorN.forEach(recorrido2);
 
     function recorrido2(item2, index2) {
-      contenedorSorteo.appendChild(resul);
       let contAciertos = 0;
-      if (item == item2) {
+      if (item.textContent == item2.textContent) {
         contAciertos++;
       }
     }
   }
+  alert(contAciertos);
 }
