@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: row;
+    border:1px solid black;
+    margin: 50px auto;
+    padding: 1em;
+    width: 90%;
+}
+.gallery {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding:1.5em;
+}
+
+.gallery div {
+    margin: 0.5em 0.5em;
+    width: 10%;
+    text-align: center;
+    border:1px solid black;
+}
