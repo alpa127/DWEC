@@ -86,15 +86,15 @@ function sorteo() {
   resul.textContent = contAciertos;
   contenedorSorteo.appendChild(resul);
 
-  function recorrido(item, index) {
-    vectorN.forEach(recorrido2);
+  // function recorrido(item, index) {
+  //   vectorN.forEach(recorrido2);
 
-    function recorrido2(item2, index2) {
-      let contAciertos = 0;
-      if (item.textContent == item2.textContent) {
-        contAciertos++;
-      }
-    }
-  }
-  alert(contAciertos);
+  //   function recorrido2(item2, index2) {
+  //     let contAciertos = 0;
+  //     if (item.textContent == item2.textContent) {
+  //       contAciertos++;
+  //     }
+  //   }
+  // }
+  // alert(contAciertos);
 }
