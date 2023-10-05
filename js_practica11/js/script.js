@@ -32,13 +32,12 @@ function inicio() {
     let leyenda = document.createElement("legend");
     leyenda.textContent = "Columna " + (i + 1);
 
-    n_colum.push(contenedorS);
-
     contenedorP.appendChild(contenedorS);
     contenedorS.appendChild(leyenda);
 
     let cont = 0;
 
+    n_colum[i] = [];
     for (let x = 0; x < NUM_CAJAS; x++) {
       let cajasNumeros = document.createElement("div");
       cajasNumeros.className = "gallery div";
