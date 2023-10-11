@@ -93,6 +93,41 @@ function inicio() {
     item.src = imagenes[indice];
   }
 
+  let listadoPrecios = document.querySelector("#pricing h2");
+
+  listadoPrecios.textContent = "Listado de Precios";
+
+  let subtituloPrecio = document.querySelector("#pricing h4");
+
+  subtituloPrecio.textContent = "Elige la forma de pago";
+
+  let cajaPrecio = document.createElement("div");
+
+  for (let i = 0; i < 3; i++) {
+    cajaPrecio.innerHTML += "<div class='col-sm-4 col-xs-12'>" +
+      "<div class='panel panel-default text-center'>" +
+      "<div class='panel-heading'>" +
+      "<h1>NuevoPrecio[i]</h1>" +
+      "</div>" +
+      "<div class='panel-body'>" +
+      "<p><strong>" + A[i] + "</strong> Euros</p>" +
+      "<p><strong>" + B[i] + "</strong> Dolares</p>" +
+      "<p><strong>" + C[i] + "</strong> Yenes</p>" +
+      "<p><strong>" + D[i] + "</strong> Sit</p>" +
+      "<p><strong>" + D[i] + "</strong> Amet</p>" +
+      "</div>" +
+      "<div class='panel-footer'>" +
+      "<h3>" + A[i] + "</h3>" +
+      "<h4>per month</h4>" +
+      "<button class='btn btn-lg'>Sign Up</button>" +
+      "</div>" +
+      "</div>" +
+      "</div>";
+  }
+
+  let contenedorPrecios = document.querySelector("#cardPrecios");
+  contenedorPrecios.appendChild(cajaPrecio);
+
   let teamDaw = ["Manuel", "Mario", "Mauro", "Alvaro", "Raul"];
   let enlaceDaw = [
     "http://practicasmanuelbote.atwebpages.com",
