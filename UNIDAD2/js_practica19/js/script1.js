@@ -1,14 +1,17 @@
 window.addEventListener("load", inicio);
+
 function inicio() {
     console.log("entro en inicio");
+
     let validar = document.getElementById("validar");
 
     let bool = true;
+
     validar.onsubmit = function () {
 
-        alert("validando");
 
         bool = true;
+
         let n1 = document.getElementById("idNumero1").value;
         let smNum1 = document.getElementById("smNumero1");
 
