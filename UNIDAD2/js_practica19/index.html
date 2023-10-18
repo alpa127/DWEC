@@ -17,28 +17,30 @@
         <div class="row">
             <div class="col-lg-6 m-auto d-block">
                 <h1>Validar Euromillones</h1>
-                <form action="index.html" method="get" id="validar">
+                <form action="http://moralo.atwebpages.com/loterias/insertar2.php" method="get" id="validar">
                     <div class="form-group">
+
                         <!--primer número-->
-                        <label for="n1"></label>
+                        <label for="n1"><b>Numero 1:</b></label>
                         <input type="text" name="n1" id="idNumero1" class="form-control" placeholder="Teclea nº 1"
                             aria-describedby="helpId" />
                         <small id="smNumero1" class="text-danger"></small>
+
+                        <!--primer texto-->
+                        <label for="texto1">Texto 1:</label>
+                        <input type="text" name="texto1" id="idTexto1" class="form-control" placeholder="Teclea nº 2"
+                            aria-describedby="helpId" />
+                        <small id="smTexto1" class="text-danger"></small>
                         <!--segundo número-->
-                        <label for="n2"></label>
-                        <input type="text" name="n2" id="idNumero2" class="form-control" placeholder="Teclea nº 2"
+                        <label for="n2">Numero 2:</label>
+                        <input type="text" name="n2" id="idNumero2" class="form-control" placeholder="Teclea nº 3"
                             aria-describedby="helpId" />
                         <small id="smNumero2" class="text-danger"></small>
-                        <!--tercer número-->
-                        <label for="n3"></label>
-                        <input type="text" name="n3" id="idNumero3" class="form-control" placeholder="Teclea nº 3"
+                        <!--segundo texto-->
+                        <label for="texto2">Texto 2:</label>
+                        <input type="text" name="texto2" id="idTexto2" class="form-control" placeholder="Teclea nº 4"
                             aria-describedby="helpId" />
-                        <small id="smNumero3" class="text-danger"></small>
-                        <!--cuarto número-->
-                        <label for="n4"></label>
-                        <input type="text" name="n4" id="idNumero4" class="form-control" placeholder="Teclea nº 4"
-                            aria-describedby="helpId" />
-                        <small id="smNumero4" class="text-danger"></small>
+                        <small id="smTexto2" class="text-danger"></small>
                     </div>
                     <button type="submit" name="validar" class="btn btn-success">Validar</button>
                     <small id="smRepetido" class="text-danger"></small>

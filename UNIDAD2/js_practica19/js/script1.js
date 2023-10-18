@@ -2,44 +2,93 @@ window.addEventListener("load", inicio);
 function inicio() {
     console.log("entro en inicio");
     let validar = document.getElementById("validar");
+
+    let bool = true;
     validar.onsubmit = function () {
-        console.log("entro en  la validación número: contenido, entero,no este repetido");
+
         alert("validando");
-        let numero1 = document.getElementById("idNumero1");
-        let mensaje1 = document.getElementById("smNumero1");
 
-        let numero2 = document.getElementById("idNumero1");
-        let mensaje2 = document.getElementById("smNumero1");
+        bool = true;
+        let n1 = document.getElementById("idNumero1").value;
+        let smNum1 = document.getElementById("smNumero1");
 
-        let numero3 = document.getElementById("idNumero1");
-        let mensaje3 = document.getElementById("smNumero1");
+        let texto1 = document.getElementById("idTexto1").value;
+        let smText1 = document.getElementById("smTexto1");
 
-        let numero4 = document.getElementById("idNumero1");
-        let mensaje4 = document.getElementById("smNumero1");
+        let n2 = document.getElementById("idNumero2").value;
+        let smNum2 = document.getElementById("smNumero2");
+
+        let texto2 = document.getElementById("idTexto2").value;
+        let smText2 = document.getElementById("smTexto2");
 
 
-        let arrayNumeros = [numero1, numero2, numero3, numero4];
-        let arrayComparacion = [];
-        let bool_repetido = true;
 
-        let infoRepetido = document.getElementById("smRepetido");
-        for (let i = 0; i < arrayNumeros.length; i++) {
-            for (let j = 0; j < arrayNumeros.length; j++) {
-                if (arrayNumeros[i] == arrayNumeros[j] && i != j) {
-                    bool_repetido = true;
-                }
-            }
-        }
-        if (bool_repetido) {
-            infoRepetido.innerHTML = "** error, número repetido";
-        }
-        validar(numero1, mensaje1);
-        validar(numero2, mensaje2);
-        validar(numero3, mensaje3);
-        validar(numero4, mensaje4);
-        function validar(num, men) {
 
-        }
+
+        validacion1(n1, smNum1);
+        validacion2(texto1, smText1);
+        // validacion3(n2, smNum2);
+        // validacion4(texto2, smText2);
+
+
+        return bool;
+
 
     }
 }
+function validacion1(num, sm) {
+
+    if (num == "") {
+        sm.innerHTML = "* Campo obligatorio.";
+        bool = false;
+    } else if (isNaN(num)) {
+        sm.innerHTML = "* Introduce un número.";
+        bool = false;
+    } else if (!Number.isInteger(Number(num))) {
+        sm.innerHTML = "* Introduce un número entero.";
+        bool = false;
+    } else if (num < 1 || num > 100) {
+        sm.innerHTML = "* Número fuera del rango (0-100).";
+        bool = false;
+    } else {
+        sm.innerHTML = "";
+    }
+
+
+}
+
+function validacion2(texto, sm) {
+
+    if (texto == "") {
+        sm.innerHTML = "* Campo obligatorio.";
+        bool = false;
+    }
+    let longitudCadena = String(texto).length;
+    console.log(longitudCadena);
+    if (longitudCadena <= 3 || longitudCadena >= 15) {
+        bool = false;
+        sm.innerHTML = "Texto no valido. Solo entre 3 y 15 caracteres";
+    }
+
+}
+
+// function validacion3(texto, sm) {
+
+//     if (num == "") {
+//         sm.innerHTML = "* Campo obligatorio.";
+//         bool = false;
+//     } else {
+//         sm.innerHTML = ""
+//     }
+
+// }
+// function validacion4(texto, sm) {
+
+//     if (num == "") {
+//         sm.innerHTML = "* Campo obligatorio.";
+//         bool = false;
+//     } else {
+//         sm.innerHTML = ""
+//     }
+
+// }
