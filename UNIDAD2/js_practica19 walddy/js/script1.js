@@ -83,36 +83,50 @@ function validacion1(texto, sm) {
     }
 }
 function validacion2(texto, sm) {
+    // if (texto == "") {
+    //     sm.innerHTML = "* Campo obligatorio.";
+    //     bool = false;
+    // } else {
+    //     let longitud = String(texto).length;
+    //     if (longitud < 20 || longitud > 30) {
+    //         sm.innerHTML =
+    //             "* La cadena no puede tener esa cantidad de caracteres (20-30).";
+    //         bool = false;
+    //     } else {
+    //         let i = 0;
+    //         let esArroba = false;
+    //         let contadorA = 0;
+
+    //         while (i < texto.length) {
+    //             let caracter = texto.charAt(i);
+    //             if (caracter == "@") {
+    //                 esArroba = true;
+    //                 contadorA++;
+    //             }
+    //             i++;
+    //         }
+
+    //         if (esArroba && contadorA == 1) {
+    //             sm.innerHTML = "";
+    //         } else {
+    //             sm.innerHTML = "* Tiene que haber una sola arroba.";
+    //             bool = false;
+    //         }
+    //     }
+    // }
+    let cadena = String(texto);
+    let longitudCadena = cadena.length;
     if (texto == "") {
         sm.innerHTML = "* Campo obligatorio.";
         bool = false;
+    } else if (longitudCadena <= 20 || longitudCadena >= 30) {
+        bool = false;
+        sm.innerHTML = "texto no valido. Solo entre 20 y 30 caracteres";
+    } else if (!(cadena.match(/@/g) || []).length != 1) {
+        bool = false;
+        sm.innerHTML = "* Tiene que contener una arroba";
     } else {
-        let longitud = String(texto).length;
-        if (longitud < 20 || longitud > 30) {
-            sm.innerHTML =
-                "* La cadena no puede tener esa cantidad de caracteres (20-30).";
-            bool = false;
-        } else {
-            let i = 0;
-            let esArroba = false;
-            let contadorA = 0;
-
-            while (i < texto.length) {
-                let caracter = texto.charAt(i);
-                if (caracter == "@") {
-                    esArroba = true;
-                    contadorA++;
-                }
-                i++;
-            }
-
-            if (esArroba && contadorA == 1) {
-                sm.innerHTML = "";
-            } else {
-                sm.innerHTML = "* Tiene que haber una sola arroba.";
-                bool = false;
-            }
-        }
+        sm.innerHTML = "";
     }
 }
 function validacion3(num, sm) {
