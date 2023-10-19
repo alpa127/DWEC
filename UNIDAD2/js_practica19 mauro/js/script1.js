@@ -93,46 +93,50 @@ function validacion4(texto, sm) {
         sm.innerHTML = "* Campo obligatorio.";
         bool = false;
     }
-    // let cadena = String(texto);
-    // cadena.toLowerCase;
-    // let existeA = false;
-    // let existeE = false;
-    // let existeO = false;
-    // let faltaA = "";
-    // let faltaE = "";
-    // let faltaO = "";
-    // for (let i = 0; i < cadena.length; i++) {
-    //     caracter = cadena.charAt(i);
-
-    //     if (caracter == 'a') {
-    //         existeA = true;
-    //     }
-    //     if (caracter == 'e') {
-    //         existeE = true;
-    //     }
-    //     if (caracter == 'o') {
-    //         existeO = true;
-    //     }
-
-    //     if (existeA == false) {
-    //         bool = false;
-    //         faltaA = "* No existe el caracter a"
-    //     }
-    //     if (existeE == false) {
-    //         bool = false;
-    //         faltaE = "* No existe el caracter e"
-    //     }
-    //     if (existeA == false) {
-    //         bool = false;
-    //         faltaO = "* No existe el caracter o"
-    //     }
-    //     sm.innerHTML = faltaA + faltaE + faltaO;
-    // }
-
     let cadena = String(texto);
     cadena.toLowerCase;
-    aparicionesA = cadena.indexOf("a");
-    aparicionesE = cadena.indexOf("e");
-    console.log(aparicionesA + " + " + aparicionesE);
+    let existeA = false;
+    let existeE = false;
+    let existeO = false;
+    let existeB = false;
+    let faltaA = "";
+    let faltaE = "";
+    let faltaO = "";
+    caracter = cadena.charAt();
+    let cont = 0;
+    for (let i = 0; i < cadena.length; i++) {
+        caracter = cadena.charAt(i);
 
+        if (caracter == 'a') {
+            existeA = true;
+        }
+        if (caracter == 'e') {
+            existeE = true;
+        }
+        if (caracter == 'o') {
+            existeO = true;
+        }
+        if (caracter == 'b') {
+            cont++;
+            if (cont == 3) {
+                existeB = true;
+                bool = false;
+                faltaB = "* Hay" + cont + " caracteres B de 3";
+            }
+        }
+
+        if (existeA == false) {
+            bool = false;
+            faltaA = "* No existe el caracter a"
+        }
+        if (existeE == false) {
+            bool = false;
+            faltaE = "* No existe el caracter e"
+        }
+        if (existeA == false) {
+            bool = false;
+            faltaO = "* No existe el caracter o"
+        }
+        sm.innerHTML = faltaA + faltaE + faltaO + faltaB;
+    }
 }

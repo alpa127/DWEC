@@ -28,10 +28,10 @@ function inicio() {
 
 
 
-        validacion1(n1, smNum1);
-        validacion2(texto1, smText1);
-        // validacion3(n2, smNum2);
-        // validacion4(texto2, smText2);
+        validacion1(texto1, smText1);
+        validacion2(texto2, smText1);
+        validacion3(n1, smNum1);
+        validacion4(n2, smNum2);
 
 
         return bool;
@@ -39,25 +39,7 @@ function inicio() {
 
     }
 }
-function validacion1(num, sm) {
-    if (num == "") {
-        sm.innerHTML = "* Campo obligatorio.";
-        bool = false;
-    } else if (isNaN(num)) {
-        sm.innerHTML = "* Introduce un número.";
-        bool = false;
-    } else if (!Number.isInteger(Number(num))) {
-        sm.innerHTML = "* Introduce un número entero.";
-        bool = false;
-    } else if (num < 1 || num > 10) {
-        sm.innerHTML = "* Número fuera del rango (0-10).";
-        bool = false;
-    } else {
-        sm.innerHTML = "";
-    }
-}
-
-function validacion2(texto, sm) {
+function validacion1(texto, sm) {
     if (texto == "") {
         sm.innerHTML = "* Campo obligatorio.";
         bool = false;
@@ -67,7 +49,8 @@ function validacion2(texto, sm) {
             sm.innerHTML =
                 "* La cadena no puede tener esa cantidad de caracteres (5-15).";
             bool = false;
-        } else {
+        }
+        else {
             let i = 0;
             let esNum = false;
             let esMayus = false;
@@ -76,7 +59,7 @@ function validacion2(texto, sm) {
                 if (!isNaN(caracter * 1)) {
                     esNum = true;
                 }
-                if (caracter === caracter.toUpperCase()) {
+                if (caracter == caracter.toUpperCase()) {
                     esMayus = true;
                 }
                 i++;
@@ -89,24 +72,17 @@ function validacion2(texto, sm) {
                 bool = false;
             }
         }
-    }
-}
 
-function validacion3(num, sm) {
-    if (num == "") {
-        sm.innerHTML = "* Campo obligatorio.";
-        bool = false;
-    } else if (isNaN(num)) {
-        sm.innerHTML = "* Introduce un número.";
-        bool = false;
-    } else if (num % 5 !== 0) {
-        sm.innerHTML = "* No es múltiplo de 5.";
-        bool = false;
-    } else {
-        sm.innerHTML = "";
+        //     let cadena = String(texto);
+        //     let longitudCadena=cadena.length;
+        //     if (texto == "") {
+        //         sm.innerHTML = "* Campo obligatorio.";
+        //         bool = false;
+        //     } else if{
+        // }
     }
 }
-function validacion4(texto, sm) {
+function validacion2(texto, sm) {
     if (texto == "") {
         sm.innerHTML = "* Campo obligatorio.";
         bool = false;
@@ -137,5 +113,39 @@ function validacion4(texto, sm) {
                 bool = false;
             }
         }
+    }
+}
+function validacion3(num, sm) {
+    if (num == "") {
+        sm.innerHTML = "* Campo obligatorio.";
+        bool = false;
+    } else if (isNaN(num)) {
+        sm.innerHTML = "* Introduce un número.";
+        bool = false;
+    } else if (!Number.isInteger(Number(num))) {
+        sm.innerHTML = "* Introduce un número entero.";
+        bool = false;
+    } else if (num < 1 || num > 10) {
+        sm.innerHTML = "* Número fuera del rango (0-10).";
+        bool = false;
+    } else {
+        sm.innerHTML = "";
+    }
+}
+
+
+
+function validacion4(num, sm) {
+    if (num == "") {
+        sm.innerHTML = "* Campo obligatorio.";
+        bool = false;
+    } else if (isNaN(num)) {
+        sm.innerHTML = "* Introduce un número.";
+        bool = false;
+    } else if (num % 5 !== 0) {
+        sm.innerHTML = "* No es múltiplo de 5.";
+        bool = false;
+    } else {
+        sm.innerHTML = "";
     }
 }
