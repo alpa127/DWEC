@@ -29,7 +29,7 @@ function inicio() {
 
 
         validacion1(texto1, smText1);
-        validacion2(texto2, smText1);
+        validacion2(texto2, smText2);
         validacion3(n1, smNum1);
         validacion4(n2, smNum2);
 
@@ -67,8 +67,7 @@ function validacion1(texto, sm) {
             if (esNum && esMayus) {
                 sm.innerHTML = "";
             } else {
-                sm.innerHTML =
-                    "* La cadena debe tener al menos una letra mayúscula y un número";
+                sm.innerHTML = "* La cadena debe tener al menos una letra mayúscula y un número";
                 bool = false;
             }
         }
