@@ -23,6 +23,7 @@ function inicio(){
 
         validarEmail(em,smEm);
         validarPasswd(passw,smPass);
+        comprobarPasswd(passw2,smPass2);
 
         return bool;
     }
@@ -75,6 +76,24 @@ function validarPasswd(pas,smPas){
                 bool = false; 
             }
 
+    }
+
+}
+
+function comprobarPasswd(pas2,smPas2){
+    console.log("entro en comprobar Contraseña");
+    let cadena = String(pas2);
+
+    if(pas2 == ""){
+        smPas2.innerHTML = "* Campo obligatorio.";
+        bool=false;
+    }else{
+        if(pas2!=pas){
+            bool=false;
+            smPas2.innerHTML = "* La contraseña introducida no es igual a la introducida anteriormente";
+        }else{
+            smPas2.innerHTML= "";
+        }
     }
 
 }
