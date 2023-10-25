@@ -45,7 +45,7 @@ function obtenerDatos() {
     }
   }
 
-  let nombre = document.getElementById("nombre").value;
+  let nomb = document.getElementById("nombre").value;
   let curso = document.getElementById("selectCurso").value;
   let horas = document.querySelectorAll("select[name=multipleselect]");
   console.log(horas);
@@ -65,7 +65,7 @@ function obtenerDatos() {
     "\nModulos: " +
     marcados +
     "\nNombre: " +
-    nombre +
+    nomb +
     "\nCurso: " +
     curso +
     "\nHoras asistidas: " +
