@@ -1,99 +1,72 @@
-window.addEventListener("load",inicio);
+window.addEventListener("load", inicio);
 
-function inicio(){
-    console.log("entro en inicio");
+let bool = true;
+function inicio() {
 
-    let accion = document.getElementById("validar");
+    let formulario = document.getElementById("aceptar");
 
-    let bool=true;
+    formulario.onsubmit = function () {
+        //alert("Entro en accion");
 
-    accion.onsubmit = function () {
-        console.log("entro en las validaciones");
 
-        bool = true;
 
-        let em = document.getElementById("email1").value;
-        let smEm = document.getElementById("smEmail");
+        let pass1 = document.getElementById("password1").value;
+        let smPass1 = document.getElementById("smPassword1");
 
-        let passw = document.getElementById("passwdNw").value;
-        let smPass = document.getElementById("smPasswd1");
+        let pass2 = document.getElementById("password2").value;
+        let smPass2 = document.getElementById("smPassword2");
+        // console.log("Es el smPass2" +smPass2);
 
-        let passw2 = document.getElementById("passwdRp").value;
-        let smPass2 = document.getElementById("smPasswd2");
+        let mail1 = document.getElementById("email");
+        let smMail1 = document.getElementById("smEmail");
 
-        validarEmail(em,smEm);
-        validarPasswd(passw,smPass);
-        comprobarPasswd(passw2,smPass2);
+        validarPassword(pass1, smPass1);
+        comprobarPassword(pass1, pass2, smPass2);
 
         return bool;
-    }
+    };
 }
 
-function validarEmail(eml,smEml){
-    console.log("entro en validar Email");
-    let cadena = String(eml);
+function validarPassword(passwd1, smPasswd1) {
+
+    let cadena = String(passwd1);
     let longitudCadena = cadena.length;
 
-    if (eml == "") {
-        smEml.innerHTML = "* Campo obligatorio.";
+    if (cadena == "") {
         bool = false;
-    } else if (longitudCadena <= 20 || longitudCadena >= 30) {
-        bool = false;
-        smEml.innerHTML = "texto no valido. Solo entre 20 y 30 caracteres";
-    } else if (!(cadena.match(/@/g) || []).length != 1) {
-        bool = false;
-        smEml.innerHTML = "* Tiene que contener una arroba";
+        smPasswd1.innerHTML = "* Campo Obligatorio";
     } else {
-        smEml.innerHTML= "Email Valido";
-}
-}
+        if (longitudCadena < 8) {
+            bool = false;
+            smPasswd1.innerHTML = "* La contraseña debe tener al menos 8 caracteres"
+        } else {
+            // let mayus= false;
+            // let indice=0;
+            // while(indice < longitudCadena && !mayus){
+            //     if(cadena.charAt(indice)== cadena.charAt(indice).toUpperCase){
+            //         mayus=true; 
+            //     }
+            //     indice++;
+            // }
+            // if(mayus==false){
+            //     bool=false;
+            //     smPasswd1.innerHTML="* La contraseña debe contener una mayuscula";
+            // }
 
-function validarPasswd(pas,smPas){
-    console.log("entro en validar Contraseña");
-    let cadena = String(pas);
-
-    if (pas == "") {
-        smPas.innerHTML = "* Campo obligatorio.";
-        bool = false;
-    } else {
-            let i = 0;
-            let esMayus = false;
-            while (i < pas.length) {
-                let caracter = pas.charAt(i);
-                if (caracter == caracter.toUpperCase()) {
-                    esMayus = true;
-                }
-                i++;
-            }
-            if (esMayus) {
-                smPas.innerHTML = "";
-             if(!(cadena.match(/$/g) || []).length != 1){
+            if (!/[A-Z]/.test(cadena) || !/[a-z]/.test(cadena) || !/\d/.test(cadena) || !cadena.includes('$')) {
                 bool = false;
-                smPas.innerHTML = "* Tiene que contener un signo dolar";
+                smPasswd1.innerHTML = "* La contraseña no cumple con los requisitos";
             }
-            } else {
-                smPas.innerHTML = "* La cadena debe tener al menos una letra mayúscula";
-                bool = false; 
-            }
-
-    }
-
-}
-
-function comprobarPasswd(pas2,smPas2){
-    console.log("entro en comprobar Contraseña");
-    let cadena = String(pas2);
-
-    if(pas2 == ""){
-        smPas2.innerHTML = "* Campo obligatorio.";
-        bool=false;
-    }else{
-        if(pas2!=pas){
-            bool=false;
-            smPas2.innerHTML = "* La contraseña introducida no es igual a la introducida anteriormente";
-        }else{
-            smPas2.innerHTML= "";
         }
     }
+}
 
+function comprobarPassword(pas1, pas2, smPas2) {
+    let cadena1 = String(pas1);
+    let cadena2 = String(pas2);
+
+    if (cadena1 != cadena2) {
+        bool = false;
+        smPas2.innerHTML = "* Las contraseñas no coinciden";
+    }
 }
