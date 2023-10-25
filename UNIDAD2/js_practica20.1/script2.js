@@ -18,7 +18,7 @@ function inicio() {
     let smHo = document.getElementById("smHoras");
 
 
-    if (ciclo == null && modulos == null && curso == null && nombre == null && horas == null) {
+    if (ciclo == null && modulos == null && curso == null && nomb == null && horas == null) {
       bool = false;
       smCi.innerHTML = "*Campo Obligatorio";
       smMo.innerHTML = "*Campo Obligatorio";
