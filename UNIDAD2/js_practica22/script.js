@@ -13,59 +13,74 @@ function inicio() {
     let apell = document.getElementById("apellidos").value;
     let smApell = document.getElementById("smApellidos");
 
-    let dwc = document.getElementById("dwec").value;
-    let smDwc = document.getElementById("smDwec");
+    let dwec = document.getElementById("dwec").value;
+    let smDwec = document.getElementById("smDwec");
 
-    let dws = document.getElementById("dwes").value;
-    let smDws = document.getElementById("smDwes");
+    let dwes = document.getElementById("dwes").value;
+    let smDwes = document.getElementById("smDwes");
 
-    let d = document.getElementById("ds").value;
-    let smD = document.getElementById("smDs");
+    let ds = document.getElementById("ds").value;
+    let smDs = document.getElementById("smDs");
 
-    let ei = document.getElementById("eie").value;
-    let smEi = document.getElementById("smEie");
+    let eie = document.getElementById("eie").value;
+    let smEie = document.getElementById("smEie");
 
-    let dw = document.getElementById("diw").value;
-    let smDw = document.getElementById("smDiw");
+    let diw = document.getElementById("diw").value;
+    let smDiw = document.getElementById("smDiw");
 
     let btnAccion = document.getElementById("btnAccion");
     let accion = document.getElementById("accion");
 
     accion.onsubmit = function () {
 
-        if (exped == null || nomb == null || apell == null || dwc == null || dws == null
-            || d == null || ei == null || dw == null) {
+        if (exped == "" || nomb == "" || apell == "" || dwec == "" || dwes == ""
+            || ds == "" || eie == "" || diw == "") {
             bool = false;
             smExped.innerHTML = "*Campo Obligatorio";
             smNomb.innerHTML = "*Campo Obligatorio";
             smApell.innerHTML = "*Campo Obligatorio";
-            smDwc.innerHTML = "*Campo Obligatorio";
-            smDws.innerHTML = "*Campo Obligatorio";
-            smD.innerHTML = "*Campo Obligatorio";
-            smEi.innerHTML = "*Campo Obligatorio";
-            smDw.innerHTML = "*Campo Obligatorio";
+            smDwec.innerHTML = "*Campo Obligatorio";
+            smDwes.innerHTML = "*Campo Obligatorio";
+            smDs.innerHTML = "*Campo Obligatorio";
+            smEie.innerHTML = "*Campo Obligatorio";
+            smDiw.innerHTML = "*Campo Obligatorio";
         } else {
             let cadena = String(exped);
-            let longitudCadena = cadena.length;
-            if (longitudCadena != 6) {
+            if (cadena.length != 6) {
                 bool = false;
                 smExped.innerHTML = "*Cadena no puede superar los 6 caracteres";
             } else {
-                for (let i; i < longitudCadena - 1; i++) {
+                for (let i; i < cadena.length - 1; i++) {
                     let caracter = cadena.charAt(i);
                     if (isNaN(caracter)) {
                         smExped.innerHTML = "*Los 5 primeros tienen que ser un numero";
                         bool = false;
                     }
                 }
-                let caracter = cadena.charAt(longitudCadena - 1);
-                if (!/[A-Z]/.test(caracter)) {
+                let caracter = cadena.charAt(cadena.length - 1);
+                if (!/[A-Z]/.test(caracter) && bool != false) {
                     smExped.innerHTML = "*Ultimo caracter debe ser mayuscula";
                     bool = false;
                 }
-                if (!dwc <= 1 || dwc > 10) {
+                if (dwec < 1 || dwec > 10 && bool != false) {
                     bool = false;
-                    smDwc.innerHTML = "";
+                    smDwec.innerHTML = "No cumple con el rango";
+                }
+                if (dwes < 1 || dwes > 10 && bool != false) {
+                    bool = false;
+                    smDwec.innerHTML = "No cumple con el rango";
+                }
+                if (ds < 1 || ds > 10 && bool != false) {
+                    bool = false;
+                    smDs.innerHTML = "No cumple con el rango";
+                }
+                if (eie < 1 || eie > 10 && bool != false) {
+                    bool = false;
+                    smEie.innerHTML = "No cumple con el rango";
+                }
+                if (diw < 1 || diw > 10 && bool != false) {
+                    bool = false;
+                    smDiw.innerHTML = "No cumple con el rango";
                 }
             }
         }
