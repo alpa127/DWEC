@@ -15,6 +15,7 @@ function mostrar() {
             //Tengo que averiguar en que formato me llegan los datos para hacer el parseo
             var objeto = JSON.parse(this.responseText);
             let idFila = document.querySelector("#fila");
+            idFila.innerHTML = "";
             objeto.forEach(recorrer);
             function recorrer(item, index) {
                 console.log(item.url);
