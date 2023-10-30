@@ -23,10 +23,6 @@ function mostrar() {
             divX.innerHTML = "<video src='" + objeto(numR).url + "' width='200' height='100'" +
                 "autoplay loop> </video>";
             container.appendChild(divX);
-
-
-
-
         }
     }
     //PRIMERO HAY QUE HACER LA PETICIÓN
