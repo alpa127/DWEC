@@ -4,7 +4,7 @@ function inicio() {
    
 
 
-f
+
     //crear un objeto XMLhttpRequest
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = cargar;
@@ -19,10 +19,10 @@ f
             menu.forEach(accion);
 
             function accion(item,indice){
-                item.querySelector("img").textContent=objeto[indice].imagen;
+                item.querySelector("img").src=objeto[indice].imagen;
                 item.querySelector("h4").textContent=objeto[indice].nombre;
-                item.querySelector("p").textContent=objeto[indice].ingredientes;
-                item.querySelector("p").textContent=objeto[indice].precio;
+                item.querySelector(".ingredients").textContent=objeto[indice].ingredientes;
+                item.querySelector(".price").textContent=objeto[indice].precio;
             }
             
             }
