@@ -7,9 +7,9 @@ function inicio() {
         if (this.readyState == 4 && this.status == 200) {
 
             //Cogemos la lista y el div contenedor del DOM
-            let contenedorIndices = document.getElementById("carousel-indicators");
-            let lista = document.getElementById("lista");
-
+            let contenedorIndices = document.querySelector("carousel-indicators");
+            //let lista = document.getElementById("lista");
+            let contenedorImagenes = document.querySelector("carousel-inner");
             //Al hacer parse nos devuelve un objeto
             var arrayJson = JSON.parse(this.responseText);
 
@@ -18,7 +18,7 @@ function inicio() {
                 //PARTE 1: LISTA OL
                 //Creamos el elemento li de la lista para cada imagen
                 let elemento = document.createElement("li");
-                elemento.setAttribute("data-target", "#myCarousel");
+                elemento.setAttribute("data-target", "#carouselId");
                 elemento.setAttribute("data-slide-to", posicion);
 
                 //Compruebo si es el primer li
@@ -27,7 +27,7 @@ function inicio() {
                 }
 
                 //Meto los li a la lista
-                lista.appendChild(elemento);
+                contenedorIndices.appendChild(elemento);
 
                 //PARTE 2: DIV DE LA IMAGEN
                 //Creamos el div que  va a tener las clases y la imagen
@@ -44,11 +44,17 @@ function inicio() {
                 //Creamos la imagen y le damos atributos
                 let imag = document.createElement("img");
                 imag.setAttribute("src", fotoCamacho.imagen);
-                imag.setAttribute("alt", fotoCamacho.texto);
+
                 imag.style = "width:100%;height:50vh;";
+
+                //Crear texto para añadir nombre del empleado
+                let nombre = document.createElement("span");
+                nombre.textContent = fotoCamacho.nombre;
+
 
                 //Meto la imagen en la caja y la caja en el contenedor
                 caja.appendChild(imag);
+                caja.appendChild(nombre);
                 contenedor.appendChild(caja);
 
             });
