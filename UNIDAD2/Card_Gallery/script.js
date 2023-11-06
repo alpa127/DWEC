@@ -88,7 +88,7 @@ function inicio() {
 
                 textoDireccion.appendChild(spanDireccion);
 
-
+                contenedorCar.appendChild(columna4);
 
             });
 
