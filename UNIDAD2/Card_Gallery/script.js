@@ -8,8 +8,8 @@ function inicio() {
 
             //Cogemos la lista y el div contenedor del DOM
             let contenedorIndices = document.querySelector(".carousel-indicators");
-            //let lista = document.getElementById("lista");
             let contenedorImagenes = document.querySelector(".carousel-inner");
+            let contenedorCar = document.querySelector("#cards");
             //Al hacer parse nos devuelve un objeto
             var arrayJson = JSON.parse(this.responseText);
             var nItems = String(arrayJson).length / 4;
@@ -59,6 +59,36 @@ function inicio() {
                 caja.appendChild(imag);
                 //caja.appendChild(nombre);
                 contenedorImagenes.appendChild(caja);
+
+                let columna4 = document.createElement("div");
+                columna4.className = "col-lg-4";
+                let equipo = document.createElement("div");
+                equipo.className = "equipo";
+
+                let equipo_foto = document.createElement("div");
+                equipo_foto.className = "equipo_foto";
+
+                columna4.appendChild(equipo);
+                equipo.appendChild(equipo_foto);
+
+                let imagen = document.createElement("img");
+                imagen.setAttribute("src", fotoCamacho.imagen);
+                equipo_foto.appendChild(imagen);
+
+                let nombreEmpleado = document.createElement("h3");
+                nombreEmpleado.innerHTML = fotoCamacho.nombre;
+
+                equipo.appendChild(nombreEmpleado);
+
+                let textoDireccion = document.createElement("div");
+                textoDireccion.className = "equipo_texto";
+
+                let spanDireccion = document.createElement("span");
+                spanDireccion.innerHTML = fotoCamacho.direccion;
+
+                textoDireccion.appendChild(spanDireccion);
+
+
 
             });
 
