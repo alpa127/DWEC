@@ -7,11 +7,12 @@ function inicio() {
         if (this.readyState == 4 && this.status == 200) {
 
             //Cogemos la lista y el div contenedor del DOM
-            let contenedorIndices = document.querySelector("carousel-indicators");
+            let contenedorIndices = document.querySelector(".carousel-indicators");
             //let lista = document.getElementById("lista");
-            let contenedorImagenes = document.querySelector("carousel-inner");
+            let contenedorImagenes = document.querySelector(".carousel-inner");
             //Al hacer parse nos devuelve un objeto
             var arrayJson = JSON.parse(this.responseText);
+            var nItems = String(arrayJson).length / 4;
 
             arrayJson.forEach(function (fotoCamacho, posicion) {
 
@@ -35,13 +36,15 @@ function inicio() {
 
                 //Compruebo si la caja es el primer item del carousel
                 if (posicion == 0) {
-                    caja.className = "item active";
+                    caja.className = "carousel-item active";
                 } else {
-                    caja.className = "item";
+                    caja.className = "carousel-item";
                 }
 
                 //PARTE 3: IMAGEN
                 //Creamos la imagen y le damos atributos
+
+                let fila = document.createElement("row");
                 let imag = document.createElement("img");
                 imag.setAttribute("src", fotoCamacho.imagen);
 
@@ -54,8 +57,8 @@ function inicio() {
 
                 //Meto la imagen en la caja y la caja en el contenedor
                 caja.appendChild(imag);
-                caja.appendChild(nombre);
-                contenedor.appendChild(caja);
+                //caja.appendChild(nombre);
+                contenedorImagenes.appendChild(caja);
 
             });
 
@@ -80,3 +83,156 @@ function inicio() {
 //             <p>Descripción</p>
 //         </div>
 //     </div> 
+
+
+
+
+//  <div class="col-lg-4">
+
+// <div class="equipo">
+
+//     <div class="equipo_foto">
+//         <img src="https://randomuser.me/api/portraits/women/17.jpg" class="img-fluid" />
+//         <h3>Lola</h3>
+//         <p>Web Designer</p>
+//     </div>
+
+//     <div class="equipo_texto">
+//         <span>
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque penatibus et magnis dis parturient montes,
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque.
+//         </span>
+//     </div>
+
+// </div>
+// </div>
+// <!--team-1-->
+
+// <!--team-2-->
+// <div class="col-lg-4">
+// <div class="equipo">
+
+//     <div class="equipo_foto">
+//         <img src="https://randomuser.me/api/portraits/men/82.jpg" class="img-fluid" />
+//         <h3>Paco</h3>
+//         <p>Web Designer</p>
+//     </div>
+
+//     <div class="equipo_texto">
+//         <span>
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque penatibus et magnis dis parturient montes,
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque.
+//         </span>
+//     </div>
+
+// </div>
+// </div>
+// <!--team-2-->
+
+// <!--team-3-->
+// <div class="col-lg-4">
+// <div class="equipo">
+
+//     <div class="equipo_foto">
+//         <img src="https://randomuser.me/api/portraits/men/58.jpg" class="img-fluid" />
+//         <h3>Pepe</h3>
+//         <p>Web Designer</p>
+//     </div>
+
+//     <div class="equipo_texto">
+//         <span>
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque penatibus et magnis dis parturient montes,
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque.
+//         </span>
+//     </div>
+
+// </div>
+// </div>
+// <!--team-3-->
+
+// <!--team-4-->
+// <div class="col-lg-4">
+// <div class="equipo">
+
+//     <div class="equipo_foto">
+//         <img src="https://randomuser.me/api/portraits/men/60.jpg" class="img-fluid" />
+//         <h3>Manuel</h3>
+//         <p>Web Designer</p>
+//     </div>
+
+//     <div class="equipo_texto">
+//         <span>
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque penatibus et magnis dis parturient montes,
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque.
+//         </span>
+//     </div>
+
+// </div>
+// </div>
+// <!--team-4-->
+
+// <!--team-5-->
+// <div class="col-lg-4">
+// <div class="equipo">
+
+//     <div class="equipo_foto">
+//         <img src="https://randomuser.me/api/portraits/women/58.jpg" class="img-fluid" />
+//         <h3>Carmela</h3>
+//         <p>Web Designer</p>
+//     </div>
+
+//     <div class="equipo_texto">
+//         <span>
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque penatibus et magnis dis parturient montes,
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque.
+//         </span>
+//     </div>
+
+// </div>
+// </div>
+// <!--team-5-->
+
+// <!--team-6-->
+// <div class="col-lg-4">
+// <div class="equipo">
+
+//     <div class="equipo_foto">
+//         <img src="https://randomuser.me/api/portraits/men/34.jpg" class="img-fluid" />
+//         <h3>José Carlos</h3>
+//         <p>Web Designer</p>
+//     </div>
+
+//     <div class="equipo_texto">
+//         <span>
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque penatibus et magnis dis parturient montes,
+//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+//             Aenean massa. Cum sociis
+//             natoque.
+//         </span>
+//     </div>
+
+// </div>
+// </div>
+// </div>
