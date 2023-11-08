@@ -49,7 +49,7 @@ function inicio() {
                 let vid = document.createElement("video");
                 vid.setAttribute("src", videoCamacho.url);
                 vid.setAttribute("autoplay", true);
-                vid.style = "width:100%;height:50vh;";
+                vid.style = "width:100%;height:500px";
 
                 //Meto la imagen en la caja y la caja en el contenedor
                 caja.appendChild(vid);
