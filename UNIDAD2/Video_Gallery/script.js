@@ -20,7 +20,7 @@ function inicio() {
             arrayJson.forEach(function (videoCamacho, posicion) {
 
                 //PARTE 1: LISTA OL
-                //Creamos el elemento li de la lista para cada imagen
+                //Creamos el elemento li de la lista para cada video
                 let elemento = document.createElement("li");
                 elemento.setAttribute("data-target", "#myCarousel");
                 elemento.setAttribute("data-slide-to", posicion);
@@ -33,7 +33,7 @@ function inicio() {
                 //Meto los li a la lista
                 lista.appendChild(elemento);
 
-                //PARTE 2: DIV DE LA IMAGEN
+                //PARTE 2: DIV DEL VIDEO
                 //Creamos el div que  va a tener las clases y el video
                 let caja = document.createElement("div");
 
