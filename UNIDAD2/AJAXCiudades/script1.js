@@ -31,9 +31,9 @@ function insertarCiudades() {
 }
 
 function mostrar() {
-    var cajaMostrarContenido = document.querySelector("#mostrarCiudades");
+    let cajaMostrarContenido = document.querySelector("#mostrarCiudades");
 
-    bloqueHtml = "";
+    let bloqueHtml = document.createElement("div");
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = cargar;
@@ -44,7 +44,7 @@ function mostrar() {
             objeto.forEach(recorrer);
 
             function recorrer(datos, index) {
-                bloqueHtml += "<div class='row'>" +
+                bloqueHtml.innerHTML += "<div class='row'>" +
                     "<div class='col-lg-2'>" + datos.id + "</div>" +
                     "<div class='col-lg-2'>" + datos.nombre + "</div>" +
                     "<div class='col-lg-2'>" + datos.poblacion + "</div>" +
