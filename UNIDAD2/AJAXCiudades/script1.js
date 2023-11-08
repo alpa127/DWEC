@@ -72,11 +72,10 @@ function eliminarCiudades() {
 
     $.ajax({
         url: "http://moralo.atwebpages.com/menuAjax/ciudades/EliminarCiudades.php",
-        type: "POST",
+        type: "GET",
         data: {
             id: id
         },
     });
 
-    mostrar();
 }
