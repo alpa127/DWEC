@@ -1,6 +1,8 @@
-window.onload = inicio;
+window.addEventListener("load", inicio);
 
 function inicio() {
+
+    console.log("entro al inicio");
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -9,11 +11,15 @@ function inicio() {
             //Cogemos la lista y el div contenedor del DOM
             let contenedorIndices = document.querySelector(".carousel-indicators");
             let contenedorImagenes = document.querySelector(".carousel-inner");
-            let contenedorCar = document.querySelector("#cards");
+            let contenedorCar = document.querySelector("#cards")
             //Al hacer parse nos devuelve un objeto
             var arrayJson = JSON.parse(this.responseText);
-            var nItems = String(arrayJson).length / 4;
 
+            var vectorAux = arrayJson;
+            var indice = 0;
+            var caja = document.createElement("row");
+
+            let lista = document.getElementById("lista");
             arrayJson.forEach(function (fotoCamacho, posicion) {
 
                 //PARTE 1: LISTA OL
@@ -26,13 +32,15 @@ function inicio() {
                 if (posicion == 0) {
                     elemento.className = "active";
                 }
-
+                lista.appendChild(elemento);
                 //Meto los li a la lista
                 contenedorIndices.appendChild(elemento);
 
                 //PARTE 2: DIV DE LA IMAGEN
                 //Creamos el div que  va a tener las clases y la imagen
-                let caja = document.createElement("div");
+
+                caja = document.createElement("row");
+
 
                 //Compruebo si la caja es el primer item del carousel
                 if (posicion == 0) {
@@ -40,26 +48,34 @@ function inicio() {
                 } else {
                     caja.className = "carousel-item";
                 }
-
+                //   contenedorImagenes.appendChild(caja);
                 //PARTE 3: IMAGEN
                 //Creamos la imagen y le damos atributos
+                let columna = document.createElement("div");
+                columna.style.width = "50vw";
+                for (let i = 0; i < 4; i++) {
+                    if ((i + indice) < vectorAux.length) {
+                        var datos = arrayJson[i + indice];
+                        let imagenX = document.createElement("img");
+                        imagenX.style.transform = "translateX(60%)";
+                        imagenX.style.margin = "2vw";
+                        imagenX.setAttribute("src", datos.imagen);
+                        columna.appendChild(imagenX);
+                    }
 
-                let fila = document.createElement("row");
-                let imag = document.createElement("img");
-                imag.setAttribute("src", fotoCamacho.imagen);
-
-                imag.style = "width:100%;height:50vh;";
-
-                //Crear texto para añadir nombre del empleado
-                let nombre = document.createElement("span");
-                nombre.textContent = fotoCamacho.nombre;
-
-
-                //Meto la imagen en la caja y la caja en el contenedor
-                caja.appendChild(imag);
-                //caja.appendChild(nombre);
+                }
+                caja.appendChild(columna);
                 contenedorImagenes.appendChild(caja);
+                indice += 4;
+                if (indice > vectorAux.length) {
+                    indice = 0;
+                }
 
+
+
+
+            });
+            arrayJson.forEach(function (fotoCamacho, posicion) {
                 let columna4 = document.createElement("div");
                 columna4.className = "col-lg-4";
                 let equipo = document.createElement("div");
@@ -67,7 +83,6 @@ function inicio() {
 
                 let equipo_foto = document.createElement("div");
                 equipo_foto.className = "equipo_foto";
-
                 columna4.appendChild(equipo);
                 equipo.appendChild(equipo_foto);
 
@@ -76,193 +91,23 @@ function inicio() {
                 equipo_foto.appendChild(imagen);
 
                 let nombreEmpleado = document.createElement("h3");
-                nombreEmpleado.innerHTML = fotoCamacho.nombre;
-
+                nombreEmpleado.textContent = fotoCamacho.nombre;
                 equipo.appendChild(nombreEmpleado);
 
                 let textoDireccion = document.createElement("div");
                 textoDireccion.className = "equipo_texto";
-
                 let spanDireccion = document.createElement("span");
-                spanDireccion.innerHTML = fotoCamacho.direccion;
-
+                spanDireccion.textContent = fotoCamacho.direccion;
                 textoDireccion.appendChild(spanDireccion);
-
+                equipo.appendChild(textoDireccion)
+                columna4.appendChild(equipo);
                 contenedorCar.appendChild(columna4);
 
             });
-
         }
     };
 
-
-
     xhr.open("GET", "http://moralo.atwebpages.com/ajaxListar/getTodoPersonal.php", true);
     xhr.send();
+
 }
-
-
-
-//  < div class="row" >
-//     <div class="col-md-3">
-//         <a href="#">
-//             <img src="https://picsum.photos/200/201/?random" alt="Image" style="max-width:100%;">
-//         </a>
-//         <div class="carousel-caption d-none d-md-block">
-//             <h3>Título 1</h3>
-//             <p>Descripción</p>
-//         </div>
-//     </div> 
-
-
-
-
-//  <div class="col-lg-4">
-
-// <div class="equipo">
-
-//     <div class="equipo_foto">
-//         <img src="https://randomuser.me/api/portraits/women/17.jpg" class="img-fluid" />
-//         <h3>Lola</h3>
-//         <p>Web Designer</p>
-//     </div>
-
-//     <div class="equipo_texto">
-//         <span>
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque penatibus et magnis dis parturient montes,
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque.
-//         </span>
-//     </div>
-
-// </div>
-// </div>
-// <!--team-1-->
-
-// <!--team-2-->
-// <div class="col-lg-4">
-// <div class="equipo">
-
-//     <div class="equipo_foto">
-//         <img src="https://randomuser.me/api/portraits/men/82.jpg" class="img-fluid" />
-//         <h3>Paco</h3>
-//         <p>Web Designer</p>
-//     </div>
-
-//     <div class="equipo_texto">
-//         <span>
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque penatibus et magnis dis parturient montes,
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque.
-//         </span>
-//     </div>
-
-// </div>
-// </div>
-// <!--team-2-->
-
-// <!--team-3-->
-// <div class="col-lg-4">
-// <div class="equipo">
-
-//     <div class="equipo_foto">
-//         <img src="https://randomuser.me/api/portraits/men/58.jpg" class="img-fluid" />
-//         <h3>Pepe</h3>
-//         <p>Web Designer</p>
-//     </div>
-
-//     <div class="equipo_texto">
-//         <span>
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque penatibus et magnis dis parturient montes,
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque.
-//         </span>
-//     </div>
-
-// </div>
-// </div>
-// <!--team-3-->
-
-// <!--team-4-->
-// <div class="col-lg-4">
-// <div class="equipo">
-
-//     <div class="equipo_foto">
-//         <img src="https://randomuser.me/api/portraits/men/60.jpg" class="img-fluid" />
-//         <h3>Manuel</h3>
-//         <p>Web Designer</p>
-//     </div>
-
-//     <div class="equipo_texto">
-//         <span>
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque penatibus et magnis dis parturient montes,
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque.
-//         </span>
-//     </div>
-
-// </div>
-// </div>
-// <!--team-4-->
-
-// <!--team-5-->
-// <div class="col-lg-4">
-// <div class="equipo">
-
-//     <div class="equipo_foto">
-//         <img src="https://randomuser.me/api/portraits/women/58.jpg" class="img-fluid" />
-//         <h3>Carmela</h3>
-//         <p>Web Designer</p>
-//     </div>
-
-//     <div class="equipo_texto">
-//         <span>
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque penatibus et magnis dis parturient montes,
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque.
-//         </span>
-//     </div>
-
-// </div>
-// </div>
-// <!--team-5-->
-
-// <!--team-6-->
-// <div class="col-lg-4">
-// <div class="equipo">
-
-//     <div class="equipo_foto">
-//         <img src="https://randomuser.me/api/portraits/men/34.jpg" class="img-fluid" />
-//         <h3>José Carlos</h3>
-//         <p>Web Designer</p>
-//     </div>
-
-//     <div class="equipo_texto">
-//         <span>
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque penatibus et magnis dis parturient montes,
-//             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//             Aenean massa. Cum sociis
-//             natoque.
-//         </span>
-//     </div>
-
-// </div>
-// </div>
-// </div>
