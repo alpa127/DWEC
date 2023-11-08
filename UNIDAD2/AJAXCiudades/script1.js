@@ -4,6 +4,9 @@ function inicio() {
 
     document.getElementById("btnInsertar").addEventListener("click", insertarCiudades);
 
+    document.getElementById("btnEliminar").addEventListener("click", eliminarCiudades);
+
+
 }
 
 function insertarCiudades() {
@@ -59,4 +62,21 @@ function mostrar() {
     xhr.open("POST", "http://moralo.atwebpages.com/menuAjax/ciudades/getCiudades.php", true);
     xhr.send();
 
+}
+
+function eliminarCiudades() {
+    console.log("Entro en Eliminar Ciudades");
+
+    var id = document.getElementById("_id").value;
+
+
+    $.ajax({
+        url: "http://moralo.atwebpages.com/menuAjax/ciudades/EliminarCiudades.php",
+        type: "POST",
+        data: {
+            id: id
+        }
+    });
+
+    mostrar();
 }
