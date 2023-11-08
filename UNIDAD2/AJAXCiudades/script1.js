@@ -75,7 +75,7 @@ function eliminarCiudades() {
         type: "POST",
         data: {
             id: id
-        }
+        },
     });
 
     mostrar();
