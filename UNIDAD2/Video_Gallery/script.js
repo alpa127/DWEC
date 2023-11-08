@@ -34,7 +34,7 @@ function inicio() {
                 lista.appendChild(elemento);
 
                 //PARTE 2: DIV DE LA IMAGEN
-                //Creamos el div que  va a tener las clases y la imagen
+                //Creamos el div que  va a tener las clases y el video
                 let caja = document.createElement("div");
 
                 //Compruebo si la caja es el primer item del carousel
@@ -45,13 +45,13 @@ function inicio() {
                 }
 
                 //PARTE 3: IMAGEN
-                //Creamos la imagen y le damos atributos
+                //Creamos el video y le damos atributos
                 let vid = document.createElement("video");
                 vid.setAttribute("src", videoCamacho.url);
                 vid.setAttribute("autoplay", true);
                 vid.style = "width:100%;height:500px";
 
-                //Meto la imagen en la caja y la caja en el contenedor
+                //Meto el video en la caja y la caja en el contenedor
                 caja.appendChild(vid);
                 contenedor.appendChild(caja);
 
