@@ -15,8 +15,26 @@ function cargarTabla() {
         "<div class='col-lg-2 text-center'>TELEFONO</div>" +
         "<div class='col-lg-2 text-center'>ELIMINAR</div>" +
         "<div class='col-lg-2 text-center'>MODIFICAR</div></div>";
-    var xhr = new XMLHttpRequest();
     tabla.appendChild(bloqueHtml);
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = cargar;
+
+
+    if (this.readyState == 4 && this.status == 200) {
+        var objeto = JSON.parse(this.responseText);
+
+        objeto.forEach(recorrer);
+
+        function recorrer(clientes, index) {
+            bloqueHtml.innerHTML += "<tr>" +
+                "<td>" + clientes + "</td>";
+        }
+    }
+
+
+    xhr.open("POST", "http://moralo.atwebpages.com/menuAjax/clientes/getClientes.php", true);
+    xhr.send();
 }
 
 function insertarUsuario() {
