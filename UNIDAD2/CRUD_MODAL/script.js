@@ -118,7 +118,23 @@ function modificar(vector) {
     $('#formclientesModal').modal("show");
     document.querySelector("#btnModificar").addEventListener("click", accionAjaxModificar);
     function accionAjaxModificar() {
+        let dniTxt = document.querySelector("#txtDni").value;
+        let nombreTxt = document.querySelector("#txtNombre").value;
+        let apellidoTxt = document.querySelector("#txtApellido").value;
+        let telefonoTxt = document.querySelector("#txtTelefono").value;
 
+        $.ajax({
+            url: "http://moralo.atwebpages.com/menuAjax/clientes/modificarClientes.php",
+            type: "POST",
+            data: {
+                //sintaxis. variablePHP : variableJs
+                dni: dniTxt,
+                nombre: nombreTxt,
+                apellido: apellidoTxt,
+                telefono: telefonoTxt
+            },
+            dataType: "JSON",
+        });
     }
 
 }
