@@ -2,8 +2,15 @@ window.onload = inicio;
 let cajaFrutas = document.querySelector("#cajaFrutas");
 cajaFrutas.innerHTML = "";
 let bloqueHtml = document.createElement("div");
-let bloqueCesta = document.createElement("div");
-let tbody = document.querySelector("tbody");
+let contenedorCesta = document.querySelector("#cestaCompra");
+let precioTotal = document.getElementById("precio");
+var total = 0;
+
+let pwd = document.getElementById("idPwd");
+let btnGestionAl = document.getElementById("confirmar");
+btnGestionAl.onclick = login;
+
+
 function inicio() {
 
 
@@ -34,7 +41,9 @@ function cargarFrutas() {
                     '</div>' +
                     '</div>';
 
+
             }
+
         }
     }
     xhr.open("GET", "http://moralo.atwebpages.com/menuAjax/productos/index.php", true);
@@ -45,17 +54,43 @@ function cargarFrutas() {
 
 function anyadirCesta(vector) {
     console.log(vector);
-
+    let cajaTr = document.createElement("tr");
     let vectorX = vector.split(",");
     let peso = prompt("Teclea los kgs de " + vectorX[1]);
+    var calculoPrecio = peso * parseFloat(vectorX[3]);
+    total = total + calculoPrecio;
+    precioTotal.textContent = total;
+
 
     if (peso && !isNaN(peso)) {
-        bloqueCesta.innerHTML = '<tr><td>' + vectorX[1] + '</td></tr>' +
+        cajaTr.innerHTML = '<td>' + vectorX[1] + '</td></tr>' +
             '<tr><td>' + peso + '</td></tr>' +
             '<tr><td>' + vectorX[3] + '</td></tr>' +
-            '<tr><td>' + (peso * parseFloat(vectorX[3])) + '</td></tr>';
+            '<td>' + calculoPrecio + '</td>' +
+            //simular botón con a href añado clase btn btn-danger (color rojo)
+            '<td><div class="col-lg-2 text-center mb-2"><a class="btn btn-danger btn-md"' +
+            //anulo el href, no hay link , pero sí hay evento onclick con 
+            //parámetro incluido: dni de esa tupla
+            'href="javascript:void(0)" onclick=eliminar(this,"' + calculoPrecio + '")>' +
+            //texto del botón e icono
+            'ELIMINAR<i class="bi bi-trash"></i> </a></div></td> ';
     }
 
+    cestaCompra.appendChild(cajaTr);
+}
 
-    tbody.appendChild(bloqueCesta);
+function eliminar(fila, calculo) {
+    //Subir de nivel hasta llegar a elemento padre tabla
+    let filaTabla = fila.parentNode.parentNode;
+    //Subir un nivel mas para conseguir el elemento  tr de esa tabla y eliminarlo
+    filaTabla.parentNode.remove(filaTabla);
+    total = total - calculo;
+    precioTotal.textContent = total;
+}
+
+function login() {
+    if (pwd.value == "frutas") {
+        window.open();
+        window.send();
+    }
 }
