@@ -10,12 +10,23 @@ let pwd = document.getElementById("idPwd");
 let btnGestionAl = document.getElementById("confirmar");
 btnGestionAl.onclick = login;
 
+let btnPDF = document.getElementById("imprimirPDF");
+btnPDF.onclick = mostrarPDF;
 
 function inicio() {
 
 
     cargarFrutas();
 
+}
+function mostrarPDF() {
+    let ticket1 = document.getElementById("cestaCompra").innerHTML;
+    console.log(ticket1);
+
+    let win = window.open("ticket.pdf", "Fruteria", "height=700,width=700");
+
+
+    win.print();
 }
 
 function cargarFrutas() {
@@ -76,7 +87,7 @@ function anyadirCesta(vector) {
             'ELIMINAR<i class="bi bi-trash"></i> </a></div></td> ';
     }
 
-    cestaCompra.appendChild(cajaTr);
+    contenedorCesta.appendChild(cajaTr);
 }
 
 function eliminar(fila, calculo) {
@@ -90,7 +101,8 @@ function eliminar(fila, calculo) {
 
 function login() {
     if (pwd.value == "frutas") {
-        window.open();
-        window.send();
+        window.open("../CRUD/index.html");
+
     }
 }
+
