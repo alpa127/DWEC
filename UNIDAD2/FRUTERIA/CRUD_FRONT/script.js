@@ -31,7 +31,7 @@ function mostrarPDF() {
 
 
     // crear una ventana window
-    var win = window.open('ticket.pdf', '', 'height=700,width=700');
+    var win = window.open('ticket.pdf', 'Fruteria', 'height=700,width=700');
 
     win.document.write('<html><head>');
     win.document.write('<title>Ticket</title>'); //cabecera del pdf
@@ -39,14 +39,14 @@ function mostrarPDF() {
     win.document.write('</head>');
     win.document.write('<body>');
     win.document.write("<table>");
-    win.document.write(tabla);
+    win.document.write(ticket1);
     win.document.write("</table>");
     win.document.write("Total: " + precio.textContent); // contenidos dentro del body
     win.document.write('</body></html>');
 
     win.document.close(); //cerrar ventana
     win.print(); // escribir contenidos
-    win.print();
+
 }
 
 function cargarFrutas() {
