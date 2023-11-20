@@ -21,11 +21,31 @@ function inicio() {
 }
 function mostrarPDF() {
     let ticket1 = document.getElementById("cestaCompra").innerHTML;
+    var estilo = "<style>" +
+        "table {width: 100%;font: 17px Calibri;}" +
+        "table, th, td {border: solid 1px #DDD; border-collapse: collapse;" +
+        "padding: 2px 3px;text-align: center;}" +
+        "</style>";
+
     console.log(ticket1);
 
-    let win = window.open("ticket.pdf", "Fruteria", "height=700,width=700");
 
+    // crear una ventana window
+    var win = window.open('ticket.pdf', '', 'height=700,width=700');
 
+    win.document.write('<html><head>');
+    win.document.write('<title>Ticket</title>'); //cabecera del pdf
+    win.document.write(estilo); // estilo cabecera
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write("<table>");
+    win.document.write(tabla);
+    win.document.write("</table>");
+    win.document.write("Total: " + precio.textContent); // contenidos dentro del body
+    win.document.write('</body></html>');
+
+    win.document.close(); //cerrar ventana
+    win.print(); // escribir contenidos
     win.print();
 }
 
