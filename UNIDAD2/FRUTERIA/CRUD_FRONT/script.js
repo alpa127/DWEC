@@ -13,6 +13,9 @@ btnGestionAl.onclick = login;
 let btnPDF = document.getElementById("imprimirPDF");
 btnPDF.onclick = mostrarPDF;
 
+let btnEnviarM = document.getElementById("enviarMail");
+btnEnviarM.onclick = enviarMail;
+
 function inicio() {
 
 
@@ -126,3 +129,23 @@ function login() {
     }
 }
 
+function enviarMail() {
+    alert("enviar mail");
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username: "apachonc05@educarex.es",
+        Password: "dnctijmtjztflakl",
+        To: 'profeaugustobriga@gmail.com',
+        From: 'apachonc05@educarex.es',
+        Subject: "Enviar mail usuario JS",
+        Body: "TODO OK!!",
+        // Attachments: [
+        // {
+        // name : "factura.pdf",
+        // path : pdfBase64
+        // }]
+    }).then(function () {
+        alert("MAIL ENVIADO OK")
+    });
+
+}
