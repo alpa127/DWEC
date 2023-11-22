@@ -3,8 +3,8 @@ var tabla = document.querySelector("#cajaTabla");
 var bloqueHtml = document.createElement("div");
 
 function inicio() {
-    let elemento = document.querySelector("#btnInsertar");
-    elemento.addEventListener("click", insertarUsuario);
+    let elemento = document.querySelector("#botonAdd");
+    elemento.addEventListener("click", insertarFrutas);
 
 
     cargarTabla();
@@ -60,7 +60,7 @@ function cargarTabla() {
 }
 
 
-function insertarUsuario() {
+function insertarFrutas() {
     console.log("entro en insertar");
     let idTxt = document.querySelector("#txtID").value;
     let nombreTxt = document.querySelector("#txtNombre").value;

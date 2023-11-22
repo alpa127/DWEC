@@ -15,8 +15,8 @@ btnGestionAl.onclick = login;
 let btnPDF = document.getElementById("imprimirPDF");
 btnPDF.onclick = mostrarPDF;
 
-let btnEnviarM = document.getElementById("enviarMail");
-btnEnviarM.onclick = enviarMail;
+let btnEnviarM = document.getElementById("imprimirTicket");
+btnEnviarM.onclick = actualizarAlmacen;
 
 function inicio() {
 
@@ -55,7 +55,7 @@ function mostrarPDF() {
 }
 
 function actualizarAlmacen() {
-    let infoCliente = prompt("DNI del cliente:");
+    let infoCliente = prompt("Nombre del Cliente:");
     for (let i = 0; i < vectorFrutas.length; i++) {
         let nombreFruta = vectorFrutas[i];
 
@@ -114,6 +114,7 @@ function anyadirCesta(vector) {
     let vectorX = vector.split(",");
     let peso = prompt("Teclea los kgs de " + vectorX[1]);
     var calculoPrecio = peso * parseFloat(vectorX[3]);
+    vectorFrutas.push(vectorX[1]);
     total = total + calculoPrecio;
     precioTotal.textContent = total;
     let id = vectorX[0];
@@ -173,7 +174,7 @@ function eliminar(fila, id, calculo, peso) {
 
 function login() {
     if (pwd.value == "frutas") {
-        window.open("../CRUD/index.html");
+        window.open("../CRUD_BACK/index.html");
 
     }
 }
