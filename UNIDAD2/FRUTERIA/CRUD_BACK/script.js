@@ -6,6 +6,7 @@ function inicio() {
     let elemento = document.querySelector("#btnInsertar");
     elemento.addEventListener("click", insertarUsuario);
 
+
     cargarTabla();
 }
 function cargarTabla() {
@@ -52,7 +53,7 @@ function cargarTabla() {
         }
     }
     //PRIMERO HAY QUE HACER LA PETICIÓN
-    xhr.open("GET", "http://moralo.atwebpages.com/menuAjax/productos/index.php", true);
+    xhr.open("GET", "http://moralo.atwebpages.com/menuAjax/productos3/getProductos.php", true);
     xhr.send();
 
     tabla.appendChild(bloqueHtml);
@@ -70,7 +71,7 @@ function insertarUsuario() {
 
 
     $.ajax({
-        url: "http://moralo.atwebpages.com/menuAjax/productos/create_product.php",
+        url: "http://moralo.atwebpages.com/menuAjax/productos3/insertarProductos.php",
         type: "POST",
         data: {
             //sintaxis. variablePHP : variableJs
@@ -81,16 +82,16 @@ function insertarUsuario() {
         },
         dataType: "JSON",
     });
-    location.reload();
+
 }
-function eliminar(dni) {
-    console.log("entro en eliminar" + dni);
-    let respuesta = confirm("¿Estás seguro de querer eliminar?" + dni + "?");
+function eliminar(id) {
+    console.log("entro en eliminar" + id);
+    let respuesta = confirm("¿Estás seguro de querer eliminar?" + id + "?");
     //Cargar el método AJAX que ejecuta el servicio eliminar.php
     if (respuesta) {
         $.ajax({
             //url del servicio
-            url: "http://moralo.atwebpages.com/menuAjax/productos/delete_product.php",
+            url: "http://moralo.atwebpages.com/menuAjax/productos3/eliminarProductos.php",
             //method
             type: "POST",
             data: {
@@ -98,7 +99,7 @@ function eliminar(dni) {
             },
             dataType: "JSON",
         });
-        location.reload();
+
     }
 }
 function modificar(vector) {
@@ -117,13 +118,14 @@ function modificar(vector) {
     $('#formfrutasModal').modal("show");
     document.querySelector("#btnModificar").addEventListener("click", accionAjaxModificar);
     function accionAjaxModificar() {
-        let idTxt = document.querySelector("#txtDni").value;
+        console.log("Entro en modif");
+        let idTxt = document.querySelector("#txtID").value;
         let nombreTxt = document.querySelector("#txtNombre").value;
         let precioTxt = document.querySelector("#txtPrecio").value;
         let photoTxt = document.querySelector("#txtPhoto").value;
 
         $.ajax({
-            url: "http://moralo.atwebpages.com/menuAjax/frutas/modificarfrutas.php",
+            url: "http://moralo.atwebpages.com/menuAjax/productos3/modificarProductos.php",
             type: "POST",
             data: {
                 //sintaxis. variablePHP : variableJs

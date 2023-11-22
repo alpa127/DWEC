@@ -6,6 +6,8 @@ let contenedorCesta = document.querySelector("#cestaCompra");
 let precioTotal = document.getElementById("precio");
 var total = 0;
 
+let vectorFrutas = [];
+
 let pwd = document.getElementById("idPwd");
 let btnGestionAl = document.getElementById("confirmar");
 btnGestionAl.onclick = login;
@@ -52,6 +54,26 @@ function mostrarPDF() {
 
 }
 
+function actualizarAlmacen() {
+    let infoCliente = prompt("DNI del cliente:");
+    for (let i = 0; i < vectorFrutas.length; i++) {
+        let nombreFruta = vectorFrutas[i];
+
+        $.ajax({
+            url: "http://moralo.atwebpages.com/menuAjax/productos3/insertarFacturacion.php",
+            type: "POST",
+            data: {
+                precioTotal: precioTotal,
+                name: nombreFruta,
+                info: infoCliente
+            },
+            dataType: "JSON"
+
+        });
+    }
+
+}
+
 function cargarFrutas() {
 
     var xhr = new XMLHttpRequest();
@@ -94,6 +116,20 @@ function anyadirCesta(vector) {
     var calculoPrecio = peso * parseFloat(vectorX[3]);
     total = total + calculoPrecio;
     precioTotal.textContent = total;
+    let id = vectorX[0];
+
+
+    $.ajax({
+        url: "http://moralo.atwebpages.com/menuAjax/productos3/actualizarAlmacen.php",
+        type: "POST",
+        data: {
+            id: id,
+            kgs: peso
+        },
+        dataType: "JSON"
+
+    });
+
 
 
     if (peso && !isNaN(peso)) {
@@ -105,21 +141,34 @@ function anyadirCesta(vector) {
             '<td><div class="col-lg-2 text-center mb-2"><a class="btn btn-danger btn-md"' +
             //anulo el href, no hay link , pero sí hay evento onclick con 
             //parámetro incluido: dni de esa tupla
-            'href="javascript:void(0)" onclick=eliminar(this,"' + calculoPrecio + '")>' +
+            'href="javascript:void(0)" onclick=eliminar(this,"' + id + calculoPrecio + peso + '")>' +
             //texto del botón e icono
             'ELIMINAR<i class="bi bi-trash"></i> </a></div></td> ';
+
+
     }
 
     contenedorCesta.appendChild(cajaTr);
 }
 
-function eliminar(fila, calculo) {
+function eliminar(fila, id, calculo, peso) {
     //Subir de nivel hasta llegar a elemento padre tabla
     let filaTabla = fila.parentNode.parentNode;
     //Subir un nivel mas para conseguir el elemento  tr de esa tabla y eliminarlo
     filaTabla.parentNode.remove(filaTabla);
-    total = total - calculo;
+    total = total - parseFloat(calculo);
     precioTotal.textContent = total;
+
+    $.ajax({
+        url: "http://moralo.atwebpages.com/menuAjax/productos3/retornarAlmacen.php",
+        type: "POST",
+        data: {
+            id: id,
+            kgs: peso
+        },
+        dataType: "JSON"
+
+    });
 }
 
 function login() {
@@ -129,23 +178,23 @@ function login() {
     }
 }
 
-function enviarMail() {
-    alert("enviar mail");
-    Email.send({
-        Host: "smtp.gmail.com",
-        Username: "apachonc05@educarex.es",
-        Password: "dnctijmtjztflakl",
-        To: 'profeaugustobriga@gmail.com',
-        From: 'apachonc05@educarex.es',
-        Subject: "Enviar mail usuario JS",
-        Body: "TODO OK!!",
-        // Attachments: [
-        // {
-        // name : "factura.pdf",
-        // path : pdfBase64
-        // }]
-    }).then(function () {
-        alert("MAIL ENVIADO OK")
-    });
+// function enviarMail() {
+//     alert("enviar mail");
+//     Email.send({
+//         Host: "smtp.gmail.com",
+//         Username: "apachonc05@educarex.es",
+//         Password: "dnctijmtjztflakl",
+//         To: 'profeaugustobriga@gmail.com',
+//         From: 'apachonc05@educarex.es',
+//         Subject: "Enviar mail usuario JS",
+//         Body: "TODO OK!!",
+//         // Attachments: [
+//         // {
+//         // name : "factura.pdf",
+//         // path : pdfBase64
+//         // }]
+//     }).then(function () {
+//         alert("MAIL ENVIADO OK")
+//     });
 
-}
+// }
