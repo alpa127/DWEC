@@ -29,17 +29,17 @@ function resultadoElecciones() {
                     parseInt(datos.nota3),
                 ];
                 let media = (notas[0] + notas[1] + notas[2]) / notas.length;
-                medias.push(datos.alumno, media);
+                medias.push(media);
                 let mayor = -1;
                 let pos = -1;
                 for (let i = 0; i < objeto, length; i++) {
                     if (medias[i] > mayor) {
                         mayor = medias[i];
-                        pos = i;
+                        nombreMediaAlta = datos.alumno;
                     }
 
                 }
-                nombreMediaAlta = medias[0];
+
 
 
 
