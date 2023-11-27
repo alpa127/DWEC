@@ -4,6 +4,7 @@ window.onload = inicio;
 const nombreProvinciasGanadas = ["", "", "", ""];
 let representantes = [];
 let medias = [];
+let nombreMediaAlta = "";
 
 let caja1 = document.querySelector("#caja1");
 let caja2 = document.querySelector("#caja2");
@@ -29,6 +30,16 @@ function resultadoElecciones() {
                 ];
                 let media = (notas[0] + notas[1] + notas[2]) / notas.length;
                 medias.push(datos.alumno, media);
+                let mayor = -1;
+                let pos = -1;
+                for (let i = 0; i < objeto, length; i++) {
+                    if (medias[i] > mayor) {
+                        mayor = medias[i];
+                        pos = i;
+                    }
+
+                }
+                nombreMediaAlta = medias[0];
 
 
 
@@ -38,7 +49,7 @@ function resultadoElecciones() {
                 let fila2 = document.createElement("tr");
                 let fila3 = document.createElement("tr");
                 fila1.innerHTML +=
-                    "<td>Alumno con nota mas alta: " + medias[i] + "</td>";
+                    "<td>Alumno con nota mas alta: " + nombreMediaAlta + "</td>";
 
                 // fila2.innerHTML +=
                 //     "<td>" + partidos[i] + "Representantes: " + PROVINCIAS[i] + "</td>";
