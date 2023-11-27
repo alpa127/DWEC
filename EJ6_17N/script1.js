@@ -35,7 +35,7 @@ function resultadoElecciones() {
                 for (let i = 0; i < objeto, length; i++) {
                     if (medias[i] > mayor) {
                         mayor = medias[i];
-                        nombreMediaAlta = datos.alumno;
+
                     }
 
                 }
