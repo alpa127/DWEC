@@ -1,0 +1,77 @@
+{
+    "sports": [
+        {
+            "idSport": "102",
+            "strSport": "Soccer"
+            
+        },
+        {
+            "idSport": "104",
+            "strSport": "Motorsport"
+        },
+        {
+            "idSport": "105",
+            "strSport": "Fighting"
+        },
+        {
+            "idSport": "108",
+            "strSport": "Baseball"
+        },
+        {
+            "idSport": "101",
+            "strSport": "Basketball"
+        },
+        {
+            "idSport": "109",
+            "strSport": "American-Football"
+        },
+        {
+            "idSport": "110",
+            "strSport": "Ice-Hockey"
+        },
+        {
+            "idSport": "106",
+            "strSport": "Golf"
+        },
+        {
+            "idSport": "111",
+            "strSport": "Rugby"
+        },
+        {
+            "idSport": "103",
+            "strSport": "Tennis"
+        },
+        {
+            "idSport": "112",
+            "strSport": "Cricket"
+        },
+        {
+            "idSport": "113",
+            "strSport": "Cycling"
+        },
+        {
+            "idSport": "114",
+            "strSport": "Australian-Football"
+        },
+        {
+            "idSport": "115",
+            "strSport": "ESports"
+        },
+        {
+            "idSport": "107",
+            "strSport": "Volleyball"
+        },
+        {
+            "idSport": "116",
+            "strSport": "Netball"
+        },
+        {
+            "idSport": "117",
+            "strSport": "Handball"
+        },
+        {
+            "idSport": "118",
+            "strSport": "Snooker"        
+        }
+    ]
+}
