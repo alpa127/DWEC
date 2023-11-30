@@ -34,7 +34,7 @@ function inicio() {
     }
 
     async function obtenerDeportes() {
-        console.log("obtenerPaises");
+        console.log("obtenerDeportes");
         const response = await fetch("deportes.json");
         const objeto = await response.json();
 
